@@ -6,14 +6,26 @@ The original b1k/b3DS project, but dockerized.
 
 ## Usage
 
-### With docker (recommended)
-```sh
-docker build -t b3ds:latest # to build docker image
-docker buildx build -t b3ds:latest . # if the previous command did not succeed
-docker run b3ds (D/E).py <game_name>.3ds # D for decrypt and E for Encrypt followed by the game file name
-```
+### Using Docker (Recommended)
 
-### With python 2.7
+1. **Build Docker Image:**
+   ```sh
+   docker build -t b3ds:latest .
+   ```
+    if the above command fails, use:
+    ```sh
+    docker buildx build -t b3ds:latest .
+    ```
+2. **Run docker container:**
+    ```sh
+    docker run --volume <path_of_your_host_machine>:(/decrypted_games|/encrypted_games) b3ds (D/E).py <game_name>.3ds
+    ```
+   - Replace <path_of_your_host_machine> with the path on your host machine.
+   - Choose either /decrypted_games or /encrypted_games to link to the respective folder inside the container.
+   - Use D for decrypting or E for encrypting, followed by the game file name <game_name>.3ds.
+
+
+### Using python 2.7
 ```sh
 python b3DSEncrypt.py (file.3ds) # to encrypt 3ds file
 python b3DSDecrypt.py (file.cia) # to decrypt cia file
