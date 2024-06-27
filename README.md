@@ -1,37 +1,30 @@
-# b3DS
-The original b1k/b3DS project, but dockerized.
+# b3DS Dockerized
+
+The original b1k/b3DS project, dockerized for easier deployment.
 
 ## Prerequisites
-* Docker engine
+- Docker engine
 
 ## Usage
 
 ### Using Docker (Recommended)
 
-**Note: To build the image succesfully, you must have the game in the same folder as the DockerFile and the b3DSDecrypt py, b3DSEncrypt.py scripts. You must also edit the line 10 of the DockerFile replacing both 'game_name' with the name of the game you want to encrypt/decrypt**
+**Note: Ensure the game file (`<game_name>.3ds`) and `b3DSDecrypt.py`, `b3DSEncrypt.py` scripts are in the same directory as the Dockerfile. Modify line 10 of the Dockerfile to replace both occurrences of 'game_name' with your game's name.**
 
-**For example:**
+
+**Example Dockerfile:**
 ```DockerFile
 FROM python:2.7-stretch
-
-
 WORKDIR /b3DS
-
-
 COPY b3DSDecrypt.py /b3DS/D.py
 COPY b3DSEncrypt.py /b3DS/E.py
 # Copy the game you want to decrypt/encrypt
 COPY MarioGame.3ds /b3DS/MarioGame.3ds 
 RUN pip install pycrypto
 
-
-# Create a directory to mount as a volume
-
 ENTRYPOINT [ "python" ]
-
-
 ```
-
+Now, open a terminal in folder mentioned before and run the following commands:
 1. **Build Docker Image:**
 
    ```sh
