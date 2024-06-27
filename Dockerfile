@@ -11,6 +11,4 @@ COPY game_name.3ds /b3DS/game_name.3ds
 RUN pip install pycrypto
 
 
-# Create a directory to mount as a volume
-
 ENTRYPOINT [ "python" ]
