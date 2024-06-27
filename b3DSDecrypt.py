@@ -1,4 +1,6 @@
 #Blank
+import shutil
+
 from Crypto.Cipher import AES
 from Crypto.Util import Counter
 from sys import argv
@@ -229,6 +231,8 @@ with open(argv[1], 'rb') as f:
                     else:
                         print ("Partition %1d Not found... Skipping...") % (p)
             print ("Done...")
+            shutil.copy('/b3DS/test.3ds', '/decrypted_games')
+
         else:
             print ("Error: Not a 3DS Rom?")
 
